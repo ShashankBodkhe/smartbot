@@ -1,6 +1,3 @@
-/**
- * Created by hemant on 12/6/16.
- */
 $(document).ready(function() {
     $("#message").on('keyup', function (e) {
         if(e.key === 'Enter'){
@@ -18,7 +15,7 @@ $(document).ready(function() {
             $(window).scrollTop(10000000000000);
 
 
-            $.post('http://localhost:8000/chatterbot/',{text: message}, function (result) {
+            $.post('http://localhost:8080/chatterbot/',{text: message}, function (result) {
                 console.log(result);
 
                 $(".chat").append(
