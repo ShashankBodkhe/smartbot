@@ -5,7 +5,7 @@ $(document).ready(function() {
             $('#message').val('');
             $(".chat").append(
                 '<li class="self">' +
-            '<div class="avatar"><img src="http://i.imgur.com/HYcn9xO.png" draggable="false"/></div>' +
+            '<div class="avatar"><img src="https://i.imgur.com/HYcn9xO.png" draggable="false"/></div>' +
                 '<div class="msg">'+
                     '<p>'+message+'</p>' +
                 '</div>'+
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
                 $(".chat").append(
                     '<li class="other">' +
-                    '<div class="avatar"><img src="http://i.imgur.com/DY6gND0.png" draggable="false"/></div>' +
+                    '<div class="avatar"><img src="https://i.imgur.com/DY6gND0.png" draggable="false"/></div>' +
                     '<div class="msg">'+
                     '<p>'+result+'</p>' +
                     '</div>'+
