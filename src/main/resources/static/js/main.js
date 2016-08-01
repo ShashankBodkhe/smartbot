@@ -15,7 +15,7 @@ $(document).ready(function() {
             $(window).scrollTop(10000000000000);
 
 
-            $.post('http://localhost:8080/chatterbot/',{text: message}, function (result) {
+            $.post('https://fuzzychat.herokuapp.com/chatterbot/',{text: message}, function (result) {
                 console.log(result);
 
                 $(".chat").append(
