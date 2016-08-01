@@ -11,6 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class ChatterbotController {
     private RestTemplate restTemplate;
 
+    @CrossOrigin
     @RequestMapping(value = "/chatterbot/",method = RequestMethod.POST)
     public @ResponseBody String getResponse(@RequestParam String text){
         final String uri = "https://phuzzybot.herokuapp.com/chatterbot/";
@@ -26,6 +27,7 @@ public class ChatterbotController {
 
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/contextLoad",method = RequestMethod.POST)
     public @ResponseBody Boolean loadContext(@RequestBody UserContext userContext){
         final String uri = "http://phuzzybot.herokuapp.com/contextLoad/";
