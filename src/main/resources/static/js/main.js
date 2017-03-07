@@ -37,7 +37,9 @@ $(document).ready(function() {
 
                 if(tourNeeded){
                     console.log('indicating that tour is needed');
-                    window.top.postMessage("tourNeeded", [tourName]);
+                    if(window.location != window.top.location) {
+                        window.top.postMessage("tourNeeded", "*");
+                    }
                     tourNeeded = false;
                 }
 
