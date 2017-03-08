@@ -15,10 +15,18 @@ $(document).ready(function() {
             $(window).scrollTop(10000000000000);
 
 
-            $.post('https://fuzzychat.herokuapp.com/chatterbot/',{text: message}, function (result) {
+            $.post('http://127.0.0.1:8000/chatterbot/',{text: message}, function (response) {
                 var tourNeeded,
-                    tourName;
-                var textInTourNeededResponse = 'balance is';
+                    tourName,
+                    result;
+                var textInTourNeededResponse = 'TourNeeded';
+                response = filterResponse(response);
+                var resultArray = response.split('&');
+                if(resultArray[0]==0){
+                    result = 'Sorry!I am not trained to answer this query yet.'
+                }else{
+                   result=resultArray[2];
+                }
                 if(result.indexOf(textInTourNeededResponse) >= 0 ) {
                     tourNeeded = true;
                     tourName = result.split(':')[1];
@@ -38,7 +46,7 @@ $(document).ready(function() {
                 if(tourNeeded){
                     console.log('indicating that tour is needed');
                     if(window.location != window.top.location) {
-                        window.top.postMessage("tourNeeded", "*");
+                        window.top.postMessage({tourNeeded: true, tourName: tourName}, "*");
                     }
                     tourNeeded = false;
                 }
@@ -49,7 +57,12 @@ $(document).ready(function() {
     })
 });
 
+var filterResponse = function (data) {
+    return data.replace(/"/g , "");
+};
+
 var tours = {
     "rewardsHub" : "Rewards And Benefits Center Experience.",
-    "rewardsActivity" : "Rewards Activity Experience."
+    "rewardsActivity" : "Rewards Activity Experience.",
+    "accountsummary":"Your Account Summary"
 };
